@@ -1,0 +1,11 @@
+CHIP ALUNostat {
+    IN x[16], y[16], zx, nx, zy, ny, f, no;
+    OUT out[16];
+
+    PARTS:
+    Register(data=x, z=zx, n=nx, out=xregister);
+    Register(data=y, z=zy, n=ny, out=yregister);
+    Function(a=xregister, b=yregister, f=f, out=result);
+    Not16(in=result, out=notresult);
+    Mux16(a=result, b=notresult, sel=no, out=out);
+}

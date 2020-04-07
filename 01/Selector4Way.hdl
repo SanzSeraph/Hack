@@ -1,0 +1,12 @@
+CHIP Selector4Way {
+    IN sel[2];
+    OUT a, b, c, d;
+
+    PARTS:
+    Not(in=sel[0], out=not0);
+    Not(in=sel[1], out=not1);
+    Nor(a=sel[0], b=sel[1], out=a);
+    And(a=sel[0], b=not1, out=b);
+    And(a=not0, b=sel[1], out=c);
+    And(a=sel[0], b=sel[1], out=d);
+}

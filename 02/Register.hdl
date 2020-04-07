@@ -1,0 +1,8 @@
+CHIP Register {
+    IN data[16], z, n;
+    OUT out[16];
+
+    PARTS:
+    Not16(in=data, out=not);
+    Mux4Way16(a=data, b=false, c=not, d=true, sel[0]=z, sel[1]=n, out=out);
+}

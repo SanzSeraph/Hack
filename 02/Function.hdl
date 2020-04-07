@@ -1,0 +1,9 @@
+CHIP Function {
+    IN a[16], b[16], f;
+    OUT out[16];
+
+    PARTS:
+    And16(a=a, b=b, out=aband);
+    Add16(a=a, b=b, out=absum);
+    Mux16(a=aband, b=absum, sel=f, out=out);
+}

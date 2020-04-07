@@ -1,0 +1,12 @@
+CHIP Mux4Way {
+    IN a, b, c, d, sel[2];
+    OUT out;
+
+    PARTS:
+    Selector4Way(sel=sel, a=sela, b=selb, c=selc, d=seld);
+    And(a=a, b=sela, out=selecteda);
+    And(a=b, b=selb, out=selectedb);
+    And(a=c, b=selc, out=selectedc);
+    And(a=d, b=seld, out=selectedd);
+    Or8Way(in[0]=selecteda, in[1]=selectedb, in[2]=selectedc, in[3]=selectedd, in[4]=false, in[5] = false, in[6] = false, in[7] = false, out=out);
+}
